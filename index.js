@@ -11,8 +11,8 @@ app.use('/public', express.static(process.cwd() + '/public'));
 
 let uploadMiddleware = upload.fields([{name: upfile, maxCount: 1}]);
 app.post('/api/fileanalyse', uploadMiddleware, function(req, res, next){
-  upfile = originalname; 
-  res.json({name: upfile, type: mimetype, size: size});
+//  res.json({name: upfile, type: File.mimetype, size: File.size, msg: "file uploaded successfully"});
+    res.send("file uploaded successfully");
 });
 
 app.get('/', function (req, res) {
