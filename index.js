@@ -9,7 +9,7 @@ var app = express();
 app.use(cors());
 app.use('/public', express.static(process.cwd() + '/public'));
 
-let uploadMiddleware = upload.fields([{name: upfile, maxCount: 1}]);
+let uploadMiddleware = upload.single('file');
 app.post('/api/fileanalyse', uploadMiddleware, function(req, res, next){
 //  res.json({name: upfile, type: File.mimetype, size: File.size, msg: "file uploaded successfully"});
     res.send("file uploaded successfully");
