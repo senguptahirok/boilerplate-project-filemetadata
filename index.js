@@ -4,7 +4,7 @@ var multer = require('multer');
 var upload = multer({dest: './boilerplate-project-filemetadata/uploads/'});
 require('dotenv').config()
 
-var app = express();
+var app = express(); 
 
 app.use(cors());
 app.use('/public', express.static(process.cwd() + '/public'));
