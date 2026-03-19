@@ -10,7 +10,7 @@ app.use(cors());
 app.use('/public', express.static(process.cwd() + '/public'));
 
 let uploadMiddleware = upload.single('file');
-app.post('/api/fileanalyse', uploadMiddleware, function(req, res){
+app.post('/api/fileanalyse', function(req, res){
 //  res.json({name: upfile, type: File.mimetype, size: File.size, msg: "file uploaded successfully"});
     res.send('file uploaded successfully');
 });
