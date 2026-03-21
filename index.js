@@ -1,7 +1,7 @@
 var express = require('express');
-// var upload = multer({dest: 'uploads/'});
 var cors = require('cors');
 var multer = require('multer');
+var upload = multer({dest: './public/uploads/'});
 require('dotenv').config()
 
 var app = express(); 
@@ -9,11 +9,8 @@ var app = express();
 app.use(cors());
 app.use('/public', express.static(process.cwd() + '/public'));
 
-//let uploadMiddleware = upload.single('file');
-app.post('/api/fileanalyse', multer.none(), function(req, res, next){
-//  res.json({name: upfile, type: File.mimetype, size: File.size, msg: "file uploaded successfully"});
-console.log('req.body = ' + req.body);
-res.send('file uploaded successfully : ' + req.body);
+app.post('/api/fileanalyse', upload.single('uploaded_file'), function(req, res){
+   res.json({'name': req.file, 'type': req.mimetype, 'size': req.size});
 });
 
 app.get('/', function (req, res) {
