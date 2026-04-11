@@ -9,7 +9,7 @@ var app = express();
 app.use(cors());
 app.use('/public', express.static(process.cwd() + '/public'));
 
-app.post('/api/fileanalyse', upload.single('uploaded_file'), function(req, res){
+app.post('/api/fileanalyse', upload.single('upfile'), function(req, res){
    res.json({'name': req.file, 'type': req.mimetype, 'size': req.size});
 });
 
